@@ -70,6 +70,7 @@ class MyApp extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     menuMet("Tài khoản và thẻ", Icons.wallet),
                     menuMet("Rút tiền", Icons.attach_money),
@@ -144,7 +145,8 @@ class MyApp extends StatelessWidget {
   Widget menuMet(String content, IconData icon) {
     return SizedBox(
       width: 60,
-      child: Column(children: [
+      child: Column(
+        children: [
         Icon(icon, color: Colors.redAccent, size: 30),
         Text(
           content,
