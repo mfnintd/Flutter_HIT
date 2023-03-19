@@ -21,22 +21,20 @@ class MainApp extends StatelessWidget {
               Text("Profile", style:TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black)),
               Text("Edit Profile", style:TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.blue))
             ],),
-            Container(
-              child: Row(children: [
-                Container(
-                  margin: const EdgeInsets.fromLTRB(0, 10, 10, 10),
-                  height: 70,
-                  width: 70,
-                  decoration: const BoxDecoration(image: DecorationImage(image: AssetImage("assets/newavacf.jpg")), shape: BoxShape.circle),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const[
-                  Text("Nguyễn Tiến Duy", style: TextStyle(fontWeight: FontWeight.bold),),
-                  Text("0969 696 969", style: TextStyle(color: Color.fromARGB(128, 0, 0, 0)),)
-                ],)
-              ],),
-            ),
+            Row(children: [
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 10, 10, 10),
+                height: 70,
+                width: 70,
+                decoration: const BoxDecoration(image: DecorationImage(image: AssetImage("assets/newavacf.jpg")), shape: BoxShape.circle),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const[
+                Text("Nguyễn Tiến Duy", style: TextStyle(fontWeight: FontWeight.bold),),
+                Text("0969 696 969", style: TextStyle(color: Color.fromARGB(128, 0, 0, 0)),)
+              ],)
+            ],),
             Container(
               margin: const EdgeInsets.only(top: 10),
               child: Column(children: [
@@ -51,13 +49,13 @@ class MainApp extends StatelessWidget {
               margin: const EdgeInsets.fromLTRB(0, 10, 10, 0),
               padding: const EdgeInsets.only(top: 10, bottom: 10),
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 255, 147, 183),
+                color: const Color.fromARGB(255, 255, 226, 236),
                 borderRadius: BorderRadius.circular(5)
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  Text("Log out", style:TextStyle(fontWeight: FontWeight.bold),),
+                  Text("Log out", style:TextStyle(fontWeight: FontWeight.bold, color: Colors.redAccent)),
                 ],
               )
             ),
