@@ -18,13 +18,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: content(),
+        body: content(context),
         bottomNavigationBar: botNav(context),
       ),
     );
   }
 
-  ListView content() {
+  ListView content(BuildContext buildContext) {
     return ListView(
         children: [
           title('THÊM BẠN THÊM VUI - MUA 2 TẶNG 1'),

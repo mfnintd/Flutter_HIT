@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "order_and_cart_ver_2",
+			"path": ".."
+		},
+		{
+			"name": "assets",
+			"path": "../../order_page/assets"
+		}
+	],
+	"settings": {}
+}
