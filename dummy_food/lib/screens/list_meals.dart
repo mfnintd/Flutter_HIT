@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'meal.dart';
 
 class ListMealsScreen extends StatelessWidget {
-  const ListMealsScreen({
-    super.key,
-    required this.category
-  });
+  const ListMealsScreen({super.key, required this.category});
   final Category category;
   @override
   Widget build(BuildContext context) {
@@ -20,7 +17,7 @@ class ListMealsScreen extends StatelessWidget {
           color: const Color.fromARGB(255, 255, 250, 200),
           child: ListView(
             children: [
-              for (Meal item in DUMMY_MEALS) 
+              for (Meal item in DUMMY_MEALS)
                 if (item.categories.contains(category.id))
                   _mealBuilder(context, item)
             ],
@@ -29,13 +26,16 @@ class ListMealsScreen extends StatelessWidget {
       ),
     );
   }
+
   Widget _mealBuilder(BuildContext context, Meal meal) {
     return InkWell(
       ///Chuyển màn qua chi tiết món ăn
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: ((context) => MealScreen(meal: meal)))
+          MaterialPageRoute(
+            builder: ((context) => MealScreen(meal: meal)),
+          ),
         );
       },
       child: Container(
@@ -44,37 +44,32 @@ class ListMealsScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 192,
-              padding: const EdgeInsets.only(bottom: 16),
-              alignment: Alignment.bottomRight,
-              decoration: BoxDecoration(
-                image: DecorationImage(
+                height: 192,
+                padding: const EdgeInsets.only(bottom: 16),
+                alignment: Alignment.bottomRight,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
                   image: NetworkImage(meal.imageUrl),
                   fit: BoxFit.cover,
-                )
-              ),
-              child: Container(
-                constraints: const BoxConstraints(
-                  minWidth: 0.0,
-                  maxWidth: double.infinity,
-                  minHeight: 0.0,
-                  maxHeight: double.infinity,
-                ),
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(128, 0, 0, 0),
-                ),
-                child: SizedBox(
-                  width: 256,
-                  child: Text(
-                    meal.title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 32
+                )),
+                child: Container(
+                  constraints: const BoxConstraints(
+                    minWidth: 0.0,
+                    maxWidth: double.infinity,
+                    minHeight: 0.0,
+                    maxHeight: double.infinity,
+                  ),
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(128, 0, 0, 0),
+                  ),
+                  child: SizedBox(
+                    width: 256,
+                    child: Text(
+                      meal.title,
+                      style: const TextStyle(color: Colors.white, fontSize: 32),
                     ),
                   ),
-                ),
-              )
-            ),
+                )),
             _mealInformation(meal)
           ],
         ),
