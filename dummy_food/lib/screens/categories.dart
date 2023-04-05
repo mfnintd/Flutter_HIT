@@ -39,9 +39,11 @@ class CategoriesScreen extends StatelessWidget {
       ///Chuyển qua màn hình hiển thị các món ăn
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: ((context) => ListMealsScreen(category: category))));
+          context,
+          MaterialPageRoute(
+            builder: ((context) => ListMealsScreen(category: category)),
+          ),
+        );
       },
       child: Container(
         padding: const EdgeInsets.all(8),
