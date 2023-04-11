@@ -49,313 +49,288 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
         ),
-        body: Container(
-          margin: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ///Title here
-              const Text(
-                'Title',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-
-              ///Title form field
-              TextFormField(
-                controller: _titleController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5),
-                    borderSide: BorderSide.none,
+        body: SingleChildScrollView(
+          child: Container(
+            margin: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ///Title here
+                const Text(
+                  'Title',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
-                  filled: true,
-                  fillColor: Colors.grey[150],
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-              ),
 
-              ///Deadline here
-              const Text(
-                'Deadline',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5),
-                    borderSide: BorderSide.none,
-                  ),
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.calendar_month),
-                    onPressed: () async {
-                      DateTime? newDate = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime.now(),
-                        lastDate: DateTime(2100),
-                      );
-                      if (newDate == null) return;
-                      deadline = newDate;
-                      setState(() {
-                        _deadlineDateController.text =
-                            DateFormat('yyyy-MM-dd').format(newDate);
-                      });
-                    },
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[150],
-                ),
-                controller: _deadlineDateController,
-                readOnly: true,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Deadline cannot be empty';
-                  }
-                  return null;
-                },
-              ),
-
-              ///Start time and end time here
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ///Start time here
-                        const Text(
-                          'Start time',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide.none,
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey[150],
-                              suffixIcon: IconButton(
-                                icon: const Icon(
-                                  Icons.schedule,
-                                ),
-                                onPressed: () async {
-                                  TimeOfDay? newStartTime =
-                                      await showTimePicker(
-                                    context: context,
-                                    initialTime: TimeOfDay.now(),
-                                  );
-                                  if (newStartTime == null) return;
-                                  startTime = newStartTime;
-                                  setState(() {
-                                    _startTimeController.text =
-                                        timeOfDayFormat12(newStartTime);
-                                  });
-                                },
-                              )),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Start time cannot be empty';
-                            }
-                            return null;
-                          },
-                          controller: _startTimeController,
-                          readOnly: true,
-                        ),
-                      ],
+                ///Title form field
+                TextFormField(
+                  controller: _titleController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide.none,
                     ),
+                    filled: true,
+                    fillColor: Colors.grey[150],
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                ),
 
-                  ///End time here
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'End Time',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide.none,
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey[150],
-                              suffixIcon: IconButton(
-                                icon: const Icon(
-                                  Icons.schedule,
-                                ),
-                                onPressed: () async {
-                                  TimeOfDay? newEndTime = await showTimePicker(
-                                    context: context,
-                                    initialTime: TimeOfDay.now(),
-                                  );
-                                  if (newEndTime == null) return;
-                                  setState(() {
-                                    endTime = newEndTime;
-                                    _endTimeController.text =
-                                        timeOfDayFormat12(newEndTime);
-                                  });
-                                },
-                              )),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'End time cannot be empty';
-                            }
-                            return null;
-                          },
-                          controller: _endTimeController,
-                          readOnly: true,
-                        ),
-                      ],
+                ///Deadline here
+                const Text(
+                  'Deadline',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide.none,
                     ),
-                  ),
-                ],
-              ),
-
-              /// Remind here
-              const Text(
-                'Remind',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              DropdownButtonFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[150],
-                ),
-                value: _remindDropDownMenuValue,
-                items:
-                    remindItems.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Text(
-                        value,
-                      ),
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.calendar_month),
+                      onPressed: () async {
+                        DateTime? newDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime.now(),
+                          lastDate: DateTime(2100),
+                        );
+                        if (newDate == null) return;
+                        deadline = newDate;
+                        setState(() {
+                          _deadlineDateController.text =
+                              DateFormat('yyyy-MM-dd').format(newDate);
+                        });
+                      },
                     ),
-                  );
-                }).toList(),
-                onChanged: (String? value) {
-                  _remindDropDownMenuValue = value!;
-                },
-              ),
-
-              /// Repeat here
-              const Text(
-                'Repeat',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              DropdownButtonFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5),
-                    borderSide: BorderSide.none,
+                    filled: true,
+                    fillColor: Colors.grey[150],
                   ),
-                  filled: true,
-                  fillColor: Colors.grey[150],
+                  controller: _deadlineDateController,
+                  readOnly: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Deadline cannot be empty';
+                    }
+                    return null;
+                  },
                 ),
-                value: _repeatDropDownMenuValue,
-                items:
-                    repeatItems.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Text(
-                        value,
-                      ),
-                    ),
-                  );
-                }).toList(),
-                onChanged: (String? value) {
-                  _repeatDropDownMenuValue = value!;
-                },
-              ),
 
-              /// Select color here
-              const Text(
-                'Color',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Container(
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                ///Start time and end time here
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    for (Color color in colorItems)
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            selectedColor = color;
-                          });
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: color,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              color: color == selectedColor
-                                  ? Colors.black
-                                  : Colors.transparent,
-                              width: 4,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ///Start time here
+                          const Text(
+                            'Start time',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                          child: Icon(
-                            Icons.check,
-                            color: color == selectedColor
-                                ? Colors.white
-                                : Colors.transparent,
+                          TextFormField(
+                            decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  borderSide: BorderSide.none,
+                                ),
+                                filled: true,
+                                fillColor: Colors.grey[150],
+                                suffixIcon: IconButton(
+                                  icon: const Icon(
+                                    Icons.schedule,
+                                  ),
+                                  onPressed: () async {
+                                    TimeOfDay? newStartTime =
+                                        await showTimePicker(
+                                      context: context,
+                                      initialTime: TimeOfDay.now(),
+                                    );
+                                    if (newStartTime == null) return;
+                                    startTime = newStartTime;
+                                    setState(() {
+                                      _startTimeController.text =
+                                          timeOfDayFormat12(newStartTime);
+                                    });
+                                  },
+                                )),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Start time cannot be empty';
+                              }
+                              return null;
+                            },
+                            controller: _startTimeController,
+                            readOnly: true,
                           ),
-                        ),
+                        ],
                       ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+
+                    ///End time here
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'End Time',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  borderSide: BorderSide.none,
+                                ),
+                                filled: true,
+                                fillColor: Colors.grey[150],
+                                suffixIcon: IconButton(
+                                  icon: const Icon(
+                                    Icons.schedule,
+                                  ),
+                                  onPressed: () async {
+                                    TimeOfDay? newEndTime =
+                                        await showTimePicker(
+                                      context: context,
+                                      initialTime: TimeOfDay.now(),
+                                    );
+                                    if (newEndTime == null) return;
+                                    setState(() {
+                                      endTime = newEndTime;
+                                      _endTimeController.text =
+                                          timeOfDayFormat12(newEndTime);
+                                    });
+                                  },
+                                )),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'End time cannot be empty';
+                              }
+                              return null;
+                            },
+                            controller: _endTimeController,
+                            readOnly: true,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-              )
-            ],
+
+                /// Remind here
+                const Text(
+                  'Remind',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                DropdownButtonFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[150],
+                  ),
+                  value: _remindDropDownMenuValue,
+                  items:
+                      remindItems.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          value,
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (String? value) {
+                    _remindDropDownMenuValue = value!;
+                  },
+                ),
+
+                /// Repeat here
+                const Text(
+                  'Repeat',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                DropdownButtonFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[150],
+                  ),
+                  value: _repeatDropDownMenuValue,
+                  items:
+                      repeatItems.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          value,
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (String? value) {
+                    _repeatDropDownMenuValue = value!;
+                  },
+                ),
+
+                /// Select color here
+                const Text(
+                  'Color',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Container(
+                  height: 64,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      for (Color color in colorItems) _colorSelectButton(color),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
         bottomNavigationBar: Container(
@@ -391,6 +366,33 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               ///pop
             },
           ),
+        ),
+      ),
+    );
+  }
+
+  TextButton _colorSelectButton(Color color) {
+    return TextButton(
+      onPressed: () {
+        setState(() {
+          selectedColor = color;
+        });
+      },
+      child: Container(
+        height: 40,
+        width: 40,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: color == selectedColor ? Colors.black : Colors.transparent,
+            width: 4,
+          ),
+        ),
+        child: Icon(
+          Icons.check,
+          color: color == selectedColor ? Colors.white : Colors.transparent,
         ),
       ),
     );
