@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 
-enum Repeat {
-  Monthly,
-  Weakly,
-  Daily,
-}
+final List<String> remindItems = <String>[
+  '10 minutes early',
+  '30 minutes early',
+  '1 hour early'
+];
+final List<String> repeatItems = <String>['Weakly', 'Monthly', 'Yearly'];
+final List<Color> colorItems = <Color>[
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+  Colors.purple
+];
 
 class Task {
   String title = 'No Title';
-  DateTime startTime;
-  DateTime endTime;
+  TimeOfDay startTime;
+  TimeOfDay endTime;
   DateTime deadline;
   bool isFavorite;
   bool isComplete;
-  int remind;
-  Repeat repeat;
+  String remind;
+  String repeat;
   Color color;
   Task(
       {required this.title,

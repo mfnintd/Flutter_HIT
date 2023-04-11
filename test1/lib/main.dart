@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:test1/add_task.dart';
-import 'task.dart';
 import 'home.dart';
 
 void main() {
