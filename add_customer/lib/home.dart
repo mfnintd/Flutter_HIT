@@ -3,7 +3,7 @@ import 'addcustomer.dart';
 import 'customer.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -31,7 +31,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     ),
   ];
 
-  late TabController _tabController = TabController(length: 4, vsync: this);
+  late final TabController _tabController =
+      TabController(length: 4, vsync: this);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         appBar: AppBar(
           actions: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
               ),
@@ -51,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AddCustiomerScreen(
+                      builder: (context) => AddCustomerScreen(
                         customers: customers,
                       ),
                     ),
@@ -61,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     },
                   );
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.add,
                 ),
               ),
@@ -70,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           bottom: TabBar(
             controller: _tabController,
             isScrollable: true,
-            tabs: <Widget>[
+            tabs: const <Widget>[
               Tab(
                 child: Text('Tất cả'),
               ),
@@ -106,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   Widget _tatCaBuilder() {
     return Container(
-      margin: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
       child: ListView.builder(
           itemCount: customers.length,
           itemBuilder: (BuildContext context, int index) {
@@ -119,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     List<Customer> tmp =
         customers.where((element) => element.type == 1).toList();
     return Container(
-      margin: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
       child: ListView.builder(
           itemCount: tmp.length,
           itemBuilder: (BuildContext context, int index) {
@@ -132,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     List<Customer> tmp =
         customers.where((element) => element.type == 2).toList();
     return Container(
-      margin: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
       child: ListView.builder(
           itemCount: tmp.length,
           itemBuilder: (BuildContext context, int index) {
@@ -145,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     List<Customer> tmp =
         customers.where((element) => element.type == 3).toList();
     return Container(
-      margin: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
       child: ListView.builder(
           itemCount: tmp.length,
           itemBuilder: (BuildContext context, int index) {
@@ -160,14 +161,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      margin: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             customer.name,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -175,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Divider(),
+                const Divider(),
                 Text(
                   customer.phoneNumber!,
                 ),

@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'customer.dart';
 import 'vietnam_provinces.dart';
 
-class AddCustiomerScreen extends StatelessWidget {
-  AddCustiomerScreen({super.key, required this.customers});
+class AddCustomerScreen extends StatelessWidget {
+  const AddCustomerScreen({super.key, required this.customers});
   final List<Customer> customers;
 
-  final _formKey = GlobalKey<FormState>();
-  final _hoVaTenController = TextEditingController();
-  int _loaiKhachValue = 1;
-  final _soDienThoaiController = TextEditingController();
-  String? _selectedProvice;
-  final _quanHuyenController = TextEditingController();
-  final _diaChiController = TextEditingController();
-  final _maSoThueController = TextEditingController();
-  final _canCuocCongDanController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _moTaController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    int loaiKhachValue = 1;
+    String? selectedProvice;
+    final formKey = GlobalKey<FormState>();
+    final hoVaTenController = TextEditingController();
+    final soDienThoaiController = TextEditingController();
+    final quanHuyenController = TextEditingController();
+    final diaChiController = TextEditingController();
+    final maSoThueController = TextEditingController();
+    final canCuocCongDanController = TextEditingController();
+    final emailController = TextEditingController();
+    final moTaController = TextEditingController();
     return Form(
-      key: _formKey,
+      key: formKey,
       child: Scaffold(
         appBar: AppBar(),
         body: SingleChildScrollView(
@@ -30,15 +28,15 @@ class AddCustiomerScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.grey[200],
             ),
-            margin: EdgeInsets.all(8),
-            padding: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Tên khách hàng'),
+                const Text('Tên khách hàng'),
                 TextFormField(
-                  controller: _hoVaTenController,
-                  decoration: InputDecoration(
+                  controller: hoVaTenController,
+                  decoration: const InputDecoration(
                     hintText: 'Ví dụ: Nguyễn Văn A',
                   ),
                   validator: (value) {
@@ -48,13 +46,13 @@ class AddCustiomerScreen extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text('Loại khách hàng'),
+                const Text('Loại khách hàng'),
                 DropdownButtonFormField<int>(
-                  value: _loaiKhachValue,
-                  items: [
+                  value: loaiKhachValue,
+                  items: const [
                     DropdownMenuItem(
                       value: 1,
                       child: Text('Khách hàng'),
@@ -69,17 +67,16 @@ class AddCustiomerScreen extends StatelessWidget {
                     )
                   ],
                   onChanged: (value) {
-                    _loaiKhachValue = value!;
+                    loaiKhachValue = value!;
                   },
-                  validator: (value) {},
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text('Số điện thoại'),
+                const Text('Số điện thoại'),
                 TextFormField(
-                  controller: _soDienThoaiController,
-                  decoration: InputDecoration(
+                  controller: soDienThoaiController,
+                  decoration: const InputDecoration(
                     hintText: 'Ví dụ: 0912345678',
                   ),
                   validator: (value) {
@@ -94,10 +91,10 @@ class AddCustiomerScreen extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text('Tỉnh/Thành phố'),
+                const Text('Tỉnh/Thành phố'),
                 DropdownButtonFormField<String>(
                   items:
                       vietnamProvinces.map<DropdownMenuItem<String>>((value) {
@@ -107,7 +104,7 @@ class AddCustiomerScreen extends StatelessWidget {
                     );
                   }).toList(),
                   onChanged: (value) {
-                    _selectedProvice = value!;
+                    selectedProvice = value!;
                   },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -116,35 +113,33 @@ class AddCustiomerScreen extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text('Quận/Huyện'),
+                const Text('Quận/Huyện'),
                 TextFormField(
-                  controller: _quanHuyenController,
-                  decoration: InputDecoration(
+                  controller: quanHuyenController,
+                  decoration: const InputDecoration(
                     hintText: 'Ví dụ: Mễ Trì',
                   ),
-                  validator: (value) {},
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text('Địa chỉ'),
+                const Text('Địa chỉ'),
                 TextFormField(
-                  controller: _diaChiController,
-                  decoration: InputDecoration(
+                  controller: diaChiController,
+                  decoration: const InputDecoration(
                     hintText: 'Ví dụ: số 8 Phạm Hùng',
                   ),
-                  validator: (value) {},
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text('Mã số thuế'),
+                const Text('Mã số thuế'),
                 TextFormField(
-                  controller: _maSoThueController,
-                  decoration: InputDecoration(
+                  controller: maSoThueController,
+                  decoration: const InputDecoration(
                     hintText: 'Ví dụ: 0105987432',
                   ),
                   validator: (value) {
@@ -159,13 +154,13 @@ class AddCustiomerScreen extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text('Căn cước công dân'),
+                const Text('Căn cước công dân'),
                 TextFormField(
-                  controller: _canCuocCongDanController,
-                  decoration: InputDecoration(
+                  controller: canCuocCongDanController,
+                  decoration: const InputDecoration(
                     hintText: 'Ví dụ: 0080321345',
                   ),
                   validator: (value) {
@@ -180,13 +175,13 @@ class AddCustiomerScreen extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text('Email'),
+                const Text('Email'),
                 TextFormField(
-                  controller: _emailController,
-                  decoration: InputDecoration(
+                  controller: emailController,
+                  decoration: const InputDecoration(
                     hintText: 'Ví dụ: softdream@gmail.com',
                   ),
                   validator: (value) {
@@ -198,41 +193,40 @@ class AddCustiomerScreen extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text('Mô tả'),
+                const Text('Mô tả'),
                 TextFormField(
-                  controller: _moTaController,
-                  decoration: InputDecoration(
+                  controller: moTaController,
+                  decoration: const InputDecoration(
                     hintText: 'Ví dụ: Chuyên gia bán các loại hàng gia dụng',
                   ),
-                  validator: (value) {},
                 ),
               ],
             ),
           ),
         ),
         bottomNavigationBar: Container(
-          margin: EdgeInsets.all(8),
+          margin: const EdgeInsets.all(8),
           child: ElevatedButton(
-            child: Text('Thêm'),
+            child: const Text('Thêm'),
             onPressed: () {
-              if (!_formKey.currentState!.validate()) {
+              if (!formKey.currentState!.validate()) {
                 return;
               }
               customers.add(
                 Customer(
-                  name: _hoVaTenController.text,
-                  type: _loaiKhachValue,
-                  city: _selectedProvice!,
-                  district: _quanHuyenController.text,
-                  phoneNumber: _soDienThoaiController.text,
-                  address: _diaChiController.text,
-                  email: _emailController.text,
-                  taxcode: _maSoThueController.text,
-                  idNumber: _canCuocCongDanController.text,
-                  description: _moTaController.text,
+                  name: hoVaTenController.text,
+                  type: loaiKhachValue,
+                  city: selectedProvice!,
+                  district: quanHuyenController.text,
+                  phoneNumber: soDienThoaiController.text,
+                  address: diaChiController.text,
+                  email: emailController.text,
+                  taxcode: maSoThueController.text,
+                  idNumber: canCuocCongDanController.text,
+                  description: moTaController.text,
                 ),
               );
               Navigator.pop(
